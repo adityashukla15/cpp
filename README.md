@@ -507,5 +507,271 @@ int main(){
     return 0;
 }
 ```
+---
+
+# 🧠 Decision Making in C++
+
+Decision-making statements allow the program to choose different paths based on conditions.
+
+---
+
+# 1️⃣ If Statement
+
+### ➤ Purpose
+
+Checks a condition and executes the block if the condition is **true**.
+
+### ➤ Syntax
+
+```cpp
+if(condition){
+    // code
+}
+```
+
+### ➤ Example
+
+```cpp
+int age = 18;
+if(age >= 18){
+    cout << "Eligible to vote";
+}
+```
+
+### ➤ How It Executes
+
+* Condition is checked.
+* If **true**, the code runs.
+* If **false**, it skips the block.
+
+---
+
+# 2️⃣ If-Else Statement
+
+### ➤ Purpose
+
+Runs one block if a condition is **true**, otherwise runs another block.
+
+### ➤ Syntax
+
+```cpp
+if(condition){
+    // true block
+} else {
+    // false block
+}
+```
+
+### ➤ Example
+
+```cpp
+int marks = 40;
+if(marks >= 35){
+    cout << "Pass";
+} else {
+    cout << "Fail";
+}
+```
+
+### ➤ Execution Flow
+
+* Check condition.
+* Execute **if block** if true.
+* Execute **else block** if false.
+
+---
+
+# 3️⃣ Nested If-Else
+
+### ➤ Purpose
+
+Using one if-else inside another if-else.
+
+### ➤ Syntax
+
+```cpp
+if(condition1){
+    if(condition2){
+        // inner true
+    } else {
+        // inner false
+    }
+} else {
+    // outer false
+}
+```
+
+### ➤ Example
+
+```cpp
+int num = 15;
+if(num > 0){
+    if(num % 2 == 0){
+        cout << "Positive Even";
+    } else {
+        cout << "Positive Odd";
+    }
+} else {
+    cout << "Non-positive number";
+}
+```
+
+### ➤ Execution Flow
+
+1. Checks outer condition.
+2. If true → checks inner condition.
+3. If outer false → directly else.
+
+---
+
+# 4️⃣ Switch Case
+
+### ➤ Purpose
+
+Used when you want to compare a value with multiple cases.
+
+### ➤ Syntax
+
+```cpp
+switch(expression){
+    case value1:
+        // code
+        break;
+    case value2:
+        // code
+        break;
+    default:
+        // code
+}
+```
+
+### ➤ Example
+
+```cpp
+int day = 3;
+switch(day){
+    case 1:
+        cout << "Monday";
+        break;
+    case 2:
+        cout << "Tuesday";
+        break;
+    case 3:
+        cout << "Wednesday";
+        break;
+    default:
+        cout << "Invalid Day";
+}
+```
+
+### ➤ Execution Flow
+
+* Matches value with each **case**.
+* Runs the matching block.
+* **break** prevents falling to next case.
+* If no match → **default** executes.
+
+---
+
+# 5️⃣ Break Statement
+
+### ➤ Purpose
+
+`break` stops the current loop or switch-case immediately.
+
+### ➤ Example in switch
+
+```cpp
+switch(choice){
+    case 1:
+        cout << "Start";
+        break;
+    case 2:
+        cout << "Stop";
+        break;
+}
+```
+
+### ➤ Without break
+
+```cpp
+switch(2){
+    case 1:
+        cout << "One";
+    case 2:
+        cout << "Two";  // executes
+    case 3:
+        cout << "Three"; // also executes (fall-through)
+}
+```
+
+---
+
+# 📝 FULL COPY-PASTE EXAMPLE PROGRAM
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main(){
+
+    int num = 10;
+
+    // If
+    if(num > 0){
+        cout << "Number is positive" << endl;
+    }
+
+    // If-Else
+    if(num % 2 == 0){
+        cout << "Even number" << endl;
+    } else {
+        cout << "Odd number" << endl;
+    }
+
+    // Nested If-Else
+    if(num > 0){
+        if(num > 5){
+            cout << "Greater than 5" << endl;
+        } else {
+            cout << "Less than or equal to 5" << endl;
+        }
+    } else {
+        cout << "Non-positive" << endl;
+    }
+
+    // Switch Case
+    int choice = 2;
+    switch(choice){
+        case 1:
+            cout << "Option 1" << endl;
+            break;
+        case 2:
+            cout << "Option 2" << endl;
+            break;
+        case 3:
+            cout << "Option 3" << endl;
+            break;
+        default:
+            cout << "Invalid Option" << endl;
+    }
+
+    return 0;
+}
+```
+
+---
+
+# 🎯 Summary
+
+* **if** → single condition
+* **if-else** → condition true/false
+* **nested if-else** → multiple levels of conditions
+* **switch-case** → multiple fixed choices
+* **break** → stops further execution
+
+---
+
+If you want, I can generate this as **PDF, DOCX, or printable format** too.
 
 
