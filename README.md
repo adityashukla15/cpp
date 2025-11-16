@@ -355,3 +355,157 @@ cin → takes single-word or numeric input
 getline() → takes full-sentence input
 Input/Output helps communicate with the user
 
+---
+
+
+# 🛠 Operators in C++
+
+Operators are symbols that perform operations on variables and values.
+
+### 🔹 Types of Operators
+
+#### 1️⃣ Arithmetic Operators
+
+| Operator | Description         |
+| -------- | ------------------- |
+| +        | Addition            |
+| -        | Subtraction         |
+| *        | Multiplication      |
+| /        | Division            |
+| %        | Modulus (remainder) |
+
+**Example:**
+
+```cpp
+int a = 5, b = 2;
+cout << a + b; // 7
+cout << a % b; // 1
+```
+
+#### 2️⃣ Relational Operators
+
+| Operator | Description           |
+| -------- | --------------------- |
+| ==       | Equal to              |
+| !=       | Not equal             |
+| >        | Greater than          |
+| <        | Less than             |
+| >=       | Greater than or equal |
+| <=       | Less than or equal    |
+
+**Example:**
+
+```cpp
+int a = 5, b = 2;
+cout << (a > b); // 1 (true)
+```
+
+#### 3️⃣ Logical Operators
+
+| Operator | Description |   |            |
+| -------- | ----------- | - | ---------- |
+| &&       | Logical AND |   |            |
+|          |             |   | Logical OR |
+| !        | Logical NOT |   |            |
+
+**Example:**
+
+```cpp
+bool x = true, y = false;
+cout << (x && y); // 0
+cout << (!x);     // 0
+```
+
+#### 4️⃣ Conditional / Ternary Operator
+
+Syntax:
+
+```cpp
+condition ? expression1 : expression2;
+```
+
+**Example:**
+
+```cpp
+int a = 10, b = 20;
+int max = (a > b) ? a : b;
+cout << max; // 20
+```
+
+---
+
+## 📄 Work Flow Example with if-else
+
+```cpp
+int num = 10;
+if(num > 0){
+    cout << "Positive";
+} else if(num < 0){
+    cout << "Negative";
+} else {
+    cout << "Zero";
+}
+```
+
+* Checks conditions in order.
+* Executes first true condition.
+
+---
+
+## 🔧 Function Example Using Operators
+
+```cpp
+int add(int x, int y){
+    return x + y;
+}
+int main(){
+    int sum = add(5, 3);
+    cout << sum; // 8
+    return 0;
+}
+```
+
+* Functions can use operators to perform operations.
+
+---
+
+# 🎯 Summary
+
+* Operators are symbols that manipulate data.
+* Types: Arithmetic, Relational, Logical, Conditional.
+* Can be used inside **if-else** or **functions** for logic and calculations.
+* Conditional operator `? :` is shorthand for simple if-else.
+
+---
+
+# 💾 Copy-Paste Example File
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int add(int x, int y){
+    return x + y;
+}
+
+int main(){
+    int a = 10, b = 20;
+    cout << "Arithmetic Operators: " << a + b << endl;
+    cout << "Relational Operator (a > b): " << (a > b) << endl;
+    cout << "Logical Operator (a < b && b > 0): " << (a < b && b > 0) << endl;
+
+    int max = (a > b) ? a : b;
+    cout << "Conditional Operator Max: " << max << endl;
+
+    if(a > 0){
+        cout << "a is Positive" << endl;
+    } else {
+        cout << "a is Non-Positive" << endl;
+    }
+
+    cout << "Function Add: " << add(a, b) << endl;
+    return 0;
+}
+```
+
+
