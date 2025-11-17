@@ -772,6 +772,168 @@ int main(){
 
 ---
 
-If you want, I can generate this as **PDF, DOCX, or printable format** too.
+# 🔁 What Are Loops?
+
+Loops are used to repeat a block of code multiple times until a condition becomes false.
+
+---
+
+# 1️⃣ For Loop
+
+### ✔ Purpose
+
+Used when **number of iterations is known**.
+
+### ✔ Syntax
+
+```cpp
+for(initialization; condition; increment){
+    // code
+}
+```
+
+### ✔ Example
+
+```cpp
+for(int i = 1; i <= 5; i++){
+    cout << i << " ";
+}
+```
+
+Output:
+
+```
+1 2 3 4 5
+```
+
+### ✔ Use Cases
+
+* Printing series of numbers
+* Accessing arrays
+* Running loop fixed number of times
+
+---
+
+# 2️⃣ While Loop
+
+### ✔ Purpose
+
+Used when **number of iterations is not known**, and loop continues until a condition becomes false.
+
+### ✔ Syntax
+
+```cpp
+while(condition){
+    // code
+}
+```
+
+### ✔ Example
+
+```cpp
+int i = 1;
+while(i <= 5){
+    cout << i << " ";
+    i++;
+}
+```
+
+### ✔ Use Cases
+
+* Reading input until user quits
+* Loops that depend on condition changes
+
+---
+
+# 3️⃣ Do-While Loop
+
+### ✔ Purpose
+
+Runs **at least once**, even if the condition is false.
+
+### ✔ Syntax
+
+```cpp
+do{
+    // code
+} while(condition);
+```
+
+### ✔ Example
+
+```cpp
+int i = 1;
+do{
+    cout << i << " ";
+    i++;
+} while(i <= 5);
+```
+
+### ✔ Use Cases
+
+* Menu-driven programs
+* Taking input until a valid value is entered
+
+---
+
+# 🔍 Comparison Table
+
+| Loop Type | Condition Check | Runs At Least Once? | Best Use           |
+| --------- | --------------- | ------------------- | ------------------ |
+| for       | Before loop     | No                  | Known iterations   |
+| while     | Before loop     | No                  | Unknown iterations |
+| do-while  | After loop      | Yes                 | Must run once      |
+
+---
+
+# 📝 FULL COPY-PASTE EXAMPLE PROGRAM
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main(){
+
+    // For Loop
+    cout << "For Loop: ";
+    for(int i = 1; i <= 5; i++){
+        cout << i << " ";
+    }
+    cout << endl;
+
+    // While Loop
+    cout << "While Loop: ";
+    int j = 1;
+    while(j <= 5){
+        cout << j << " ";
+        j++;
+    }
+    cout << endl;
+
+    // Do-While Loop
+    cout << "Do-While Loop: ";
+    int k = 1;
+    do{
+        cout << k << " ";
+        k++;
+    } while(k <= 5);
+    cout << endl;
+
+    return 0;
+}
+```
+
+---
+
+# 🎯 Summary
+
+* **for loop** → use when you know how many times to repeat.
+* **while loop** → use when condition controls the repetition.
+* **do-while loop** → runs at least once before checking condition.
+
+---
+
+If you want, I can combine this with your previous C++ notes into one full PDF.
+
 
 
