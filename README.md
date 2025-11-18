@@ -931,9 +931,279 @@ int main(){
 * **while loop** → use when condition controls the repetition.
 * **do-while loop** → runs at least once before checking condition.
 
+
+---
+# Functions:
+
+# 🔥 1. What is a Function?
+
+A **function** is a block of code that performs a specific task and can be reused.
+
+### ✔ Definition
+
+* Breaks big programs into smaller parts
+* Increases code reusability
+* Makes code modular
+
+### ✔ Syntax
+
+```cpp
+returnType functionName(parameters){
+    // code
+}
+```
+
+### ✔ Example
+
+```cpp
+int add(int a, int b){
+    return a + b;
+}
+```
+
+### ✔ Calling
+
+```cpp
+int result = add(5, 3);
+```
+
 ---
 
-If you want, I can combine this with your previous C++ notes into one full PDF.
+# 🚀 2. Function Overloading
+
+**Same function name**, but **different parameters**.
+
+### ✔ Rules
+
+* Parameter type should differ OR
+* Number of parameters should differ OR
+* Order should differ
+
+### ✔ Syntax
+
+```cpp
+int sum(int a, int b);
+double sum(double a, double b);
+```
+
+### ✔ Example
+
+```cpp
+int sum(int a, int b){ return a + b; }
+double sum(double a, double b){ return a + b; }
+```
+
+### ✔ Workflow
+
+1. Compiler checks function name
+2. Matches parameter count & type
+3. Calls the correct version
+
+---
+
+# 🟦 3. Call By Value
+
+A **copy** of the variable is passed to the function.
+
+### ✔ Original variable does NOT change.
+
+### ✔ Syntax
+
+```cpp
+void change(int x){
+    x = 20;
+}
+```
+
+### ✔ Example
+
+```cpp
+int a = 10;
+change(a);
+// a will remain 10
+```
+
+### ✔ Workflow
+
+* Copy created → function uses copy → original value unaffected
+
+---
+
+# 🟩 4. Pass By Reference
+
+The **actual variable** is passed, not a copy.
+
+### ✔ Original value CHANGES.
+
+### ✔ Syntax
+
+```cpp
+void change(int &x){
+    x = 20;
+}
+```
+
+### ✔ Example
+
+```cpp
+int a = 10;
+change(a);
+// a becomes 20
+```
+
+### ✔ Workflow
+
+* No copy created → function modifies actual memory
+
+---
+
+# 🟧 5. Lambda Functions
+
+Short anonymous functions introduced in C++11.
+
+### ✔ Syntax
+
+```cpp
+[capture](parameters) -> returnType {
+    // code
+};
+```
+
+### ✔ Basic Example
+
+```cpp
+auto add = [](int a, int b){ return a + b; };
+cout << add(5, 3);
+```
+
+### ✔ Capture Types
+
+| Capture | Meaning                   |
+| ------- | ------------------------- |
+| `[ ]`   | captures nothing          |
+| `[x]`   | captures x by value       |
+| `[&x]`  | captures x by reference   |
+| `[=]`   | captures all by value     |
+| `[&]`   | captures all by reference |
+
+---
+
+# 🟥 6. Scopes in C++
+
+Scope means “where a variable can be accessed”.
+
+## ➤ Types of Scope
+
+### 1. **Local Scope**
+
+Variable declared inside function/block → accessible only inside it.
+
+```cpp
+void fun(){
+    int x = 10;
+}
+```
+
+### 2. **Global Scope**
+
+Declared outside all functions → available everywhere.
+
+```cpp
+int globalVar = 50;
+```
+
+### 3. **Function Scope**
+
+Variables exist only inside the function.
+
+### 4. **Block Scope**
+
+Variables inside `{ }` exist only inside block.
+
+```cpp
+if(true){ int y = 5; }
+```
+
+---
+
+# 🌍 7. Global Variables
+
+Declared outside all functions → accessible everywhere.
+
+### ✔ Example
+
+```cpp
+int g = 100;
+
+void show(){ cout << g; }
+```
+
+### ✔ Drawback
+
+* Can be modified anywhere → unsafe
+
+---
+
+# 📝 FULL COPY-PASTE PROGRAM (All Topics Covered)
+
+```cpp
+#include <iostream>
+using namespace std;
+
+// Global variable
+int g = 100;
+
+// Function overloading
+int sum(int a, int b){ return a + b; }
+double sum(double a, double b){ return a + b; }
+
+// Call by value
+void changeValue(int x){
+    x = 20;
+}
+
+// Pass by reference
+void changeRef(int &x){
+    x = 20;
+}
+
+int main(){
+
+    // Global variable
+    cout << "Global g: " << g << endl;
+
+    // Function overloading
+    cout << "Sum int: " << sum(5, 3) << endl;
+    cout << "Sum double: " << sum(5.5, 3.3) << endl;
+
+    // Call by value
+    int a = 10;
+    changeValue(a);
+    cout << "After call by value: " << a << endl; // still 10
+
+    // Pass by reference
+    changeRef(a);
+    cout << "After pass by reference: " << a << endl; // now 20
+
+    // Lambda function
+    auto multiply = [](int x, int y){ return x * y; };
+    cout << "Lambda multiply: " << multiply(4, 3) << endl;
+
+    return 0;
+}
+```
+
+---
+
+# 🎯 Summary
+
+* **Function** → reusable block of code
+* **Overloading** → same function name, different parameters
+* **Call by Value** → copy passed, original unchanged
+* **Pass by Reference** → original modified
+* **Lambda** → small inline functions
+* **Scopes** → local, global, block, function scop
+
 
 
 
