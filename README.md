@@ -933,7 +933,7 @@ int main(){
 
 
 ---
-# Functions:
+# Functions:'
 
 # 🔥 1. What is a Function?
 
@@ -1203,7 +1203,255 @@ int main(){
 * **Pass by Reference** → original modified
 * **Lambda** → small inline functions
 * **Scopes** → local, global, block, function scop
+---
 
+# 📌 **1. What is OOPS? (Object-Oriented Programming System)**
 
+OOPS ek programming model hai jo real-world entities ko **objects** ki form me represent karta hai.
 
+### ✔ Definition
+
+“OOPS is a programming paradigm that organizes code into **objects** containing **data** (attributes) and **functions** (methods).”
+
+### ✔ Features of OOPS
+
+* Encapsulation
+* Abstraction
+* Inheritance
+* Polymorphism
+
+---
+
+# 📌 **2. OOPS kyu aya? (Why OOPS?)**
+
+Pehle languages (C language) **procedural** thi → pura code functions me.
+
+Issues:
+
+* Code reuse nahi ho pata tha
+* Complexity badh jati thi
+* Real-world modelling mushkil
+* Data secure nahi rehta tha
+
+OOPS ne solve kiya:
+
+* Data hide karna (encapsulation)
+* Complex code ko object-based structure dena
+* Code reuse through classes & inheritance
+* Maintainable architecture
+
+---
+
+# 📌 **3. C++ vs Java (OOPS differences)**
+
+| Feature              | C++                                 | Java                          |
+| -------------------- | ----------------------------------- | ----------------------------- |
+| Compilation          | Compiled                            | Compiled + JVM executes       |
+| Memory               | Manual (pointers)                   | Automatic (Garbage Collector) |
+| Multiple Inheritance | Allowed (with classes)              | Not allowed (only interfaces) |
+| Platform             | Machine-dependent                   | Platform-independent          |
+| OOPS                 | Hybrid (supports procedural + OOPS) | Pure OOPS                     |
+| Pointers             | Yes                                 | No                            |
+
+### Summary:
+
+C++ = more control, hybrid model
+Java = cleaner, fully object-oriented, memory-safe
+
+---
+
+# 📌 **4. What is a Class?**
+
+Class = blueprint/template jisse object banta hai.
+
+### Example
+
+```cpp
+class Student {
+public:
+    string name;
+    int age;
+
+    void introduce() {
+        cout << "My name is " << name << " and I am " << age << " years old." << endl;
+    }
+};
+```
+
+---
+
+# 📌 **5. What is an Object?**
+
+Object = class ka real-world instance.
+
+### Example
+
+```cpp
+Student s1;          // object creation
+s1.name = "Aditya";
+s1.age = 18;
+s1.introduce();
+```
+
+---
+
+# 📌 **6. Access Specifiers (public, private)**
+
+### ✔ `public:`
+
+* Sabse accessible
+* Class ke bahar se bhi access ho sakta hai
+
+### ✔ `private:`
+
+* Sirf class ke andar accessible
+* Object ke through direct access **not allowed**
+
+### Example
+
+```cpp
+class Demo {
+private:
+    int secret = 10;
+
+public:
+    int x = 5;
+
+    int getSecret() {
+        return secret;
+    }
+};
+```
+
+Usage:
+
+```cpp
+Demo d;
+cout << d.x;           // allowed
+cout << d.getSecret(); // allowed (via function)
+// cout << d.secret;  // ❌ error
+```
+
+---
+
+# 📌 **7. Member Functions**
+
+Functions defined inside a class.
+
+```cpp
+class Math {
+public:
+    int add(int a, int b) {
+        return a + b;
+    }
+};
+```
+
+Usage:
+
+```cpp
+Math m;
+cout << m.add(10, 20);
+```
+
+---
+
+# 📌 **8. Constructor (Optional Concept)**
+
+Automatically called function when object is created.
+
+```cpp
+class Car {
+public:
+    Car() {
+        cout << "Car created!";
+    }
+};
+```
+
+---
+
+# 📌 **9. Vector in C++ (from STL)**
+
+Vector = dynamic array → automatically grow/shrink hota hai.
+
+### Example
+
+```cpp
+#include <vector>
+using namespace std;
+
+vector<int> nums;
+nums.push_back(10);
+nums.push_back(20);
+nums.push_back(30);
+
+for(int n : nums) {
+    cout << n << " ";
+}
+```
+
+### Common vector functions:
+
+* `push_back(x)` → end me add
+* `pop_back()` → last element hatana
+* `size()` → kitne elements
+* `at(index)` → safe access
+* `clear()` → empty vector
+
+---
+
+# 📌 **10. Full Example — Class + Object + Private + Public + Vector**
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Student {
+private:
+    int id;
+
+public:
+    string name;
+    vector<int> marks;
+
+    Student(int x, string y) {
+        id = x;
+        name = y;
+    }
+
+    void addMark(int m) {
+        marks.push_back(m);
+    }
+
+    void showDetails() {
+        cout << "ID: " << id << "\n";
+        cout << "Name: " << name << "\nMarks: ";
+        for(int m : marks) cout << m << " ";
+        cout << endl;
+    }
+};
+
+int main() {
+    Student s1(101, "Aditya");
+    s1.addMark(85);
+    s1.addMark(90);
+
+    s1.showDetails();
+}
+```
+
+---
+
+# 📌 **11. Execution Flow Summary**
+
+```
+main() → object create → constructor run
+        → public members accessible
+        → private accessible via methods only
+        → vector stores marks dynamically
+```
+
+---
 
