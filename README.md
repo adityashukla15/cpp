@@ -1455,3 +1455,256 @@ main() → object create → constructor run
 
 ---
 
+# 📌 1. **Pointers in C++**
+
+Pointer = variable that stores **address** of another variable.
+
+### ✔ Syntax
+
+```cpp
+int x = 10;
+int *p = &x;
+```
+
+### ✔ Accessing value using pointer
+
+```cpp
+cout << *p;  // dereference
+```
+
+### ✔ Execution Flow
+
+```
+Variable x → memory address → pointer stores that → *p gives value
+```
+
+---
+
+# 📌 2. **Reference in C++**
+
+Reference = existing variable ka **nickname**.
+
+### ✔ Syntax
+
+```cpp
+int x = 5;
+int &ref = x;
+```
+
+### ✔ Behavior
+
+* Always must be initialized
+* Cannot be changed to refer to another variable
+* Used for call by reference
+
+---
+
+# 📌 3. **Constructor in C++**
+
+Constructor = special function jo object banate hi run hota hai.
+
+### ✔ Types
+
+1. Default constructor
+2. Parameterized constructor
+3. Copy constructor
+
+---
+
+# 📌 3.1 **Default Constructor**
+
+```cpp
+class A {
+public:
+    A() {
+        cout << "Default Constructor Called";
+    }
+};
+```
+
+---
+
+# 📌 3.2 **Parameterized Constructor**
+
+```cpp
+class Student {
+    int age;
+public:
+    Student(int x) {
+        age = x;
+    }
+};
+```
+
+### ✔ Execution Flow
+
+```
+Object creation → arguments pass → constructor sets variables → object ready
+```
+
+---
+
+# 📌 4. **Heap Memory with Constructors (new keyword)**
+
+Objects can be created dynamically using **new**.
+
+```cpp
+Student *s = new Student(20);
+```
+
+### ✔ Why Heap Allocation?
+
+* Runtime memory control
+* Object persistent until manually deleted
+* Required when size unknown at compile time
+
+### ✔ Access
+
+```cpp
+cout << s->age;
+```
+
+---
+
+# 📌 5. **Copy Constructor**
+
+Used to copy object values.
+
+### ✔ Syntax
+
+```cpp
+ClassName(const ClassName &obj) {
+    // copy logic
+}
+```
+
+---
+
+# 📌 5.1 **Deep Copy Example (Pointer fields)**
+
+```cpp
+class Book {
+public:
+    string *title;
+
+    Book(string t) {
+        title = new string(t);   // heap memory
+    }
+
+    Book(const Book &b) {        // deep copy
+        title = new string(*b.title);
+    }
+};
+```
+
+### ✔ Execution Flow
+
+```
+Original object → copies value → allocates new memory → independent object
+```
+
+---
+
+# 📌 6. Using **other** inside Constructor
+
+`other` ka use copy constructor me hota hai.
+
+### Example
+
+```cpp
+Book(const Book &other) {
+    title = new string(*other.title);   // copying value
+}
+```
+
+This avoids **shallow copy**, ensures **new memory** is created.
+
+---
+
+# 📌 7. **Destructor (~)**
+
+Destructor = object destroy hone par auto-call hota hai.
+
+### ✔ Syntax
+
+```cpp
+~ClassName() {
+    cout << "Destructor Called";
+}
+```
+
+### ✔ Use
+
+* Free heap memory
+* Prevent memory leaks
+
+### ✔ Example
+
+```cpp
+class Test {
+public:
+    int *ptr;
+
+    Test(int x) {
+        ptr = new int(x);
+    }
+
+    ~Test() {
+        delete ptr;
+        cout << "Memory Released";
+    }
+};
+```
+
+---
+
+# 📌 8. Full Example Combining Everything
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Demo {
+public:
+    int *data;
+
+    Demo(int x) {                // parameterized
+        data = new int(x);
+        cout << "Constructor Called\n";
+    }
+
+    Demo(const Demo &other) {    // deep copy
+        data = new int(*other.data);
+        cout << "Copy Constructor Called\n";
+    }
+
+    ~Demo() {                    // destructor
+        delete data;
+        cout << "Destructor Called\n";
+    }
+};
+
+int main() {
+    Demo d1(10);      // constructor
+    Demo d2 = d1;     // copy constructor
+
+    cout << *d1.data << " " << *d2.data;
+}
+```
+
+---
+
+# 📌 9. Execution Flow Summary
+
+```
+main()
+ ↓
+Create d1 → parameterized constructor
+ ↓
+Create d2 using d1 → copy constructor
+ ↓
+Program end → destructors run → memory freed
+```
+
+---
+
