@@ -1900,4 +1900,231 @@ Use Cases → Debugging, printing, comparing, operator overload.
 
 ---
 
+# 🟦 C++ Getters, Setters, Delegating Constructors & `const` 
+
+Below are clean, structured, copy-paste-ready notes based on:
+✔ Getters & Setters (Accessors / Mutators)
+✔ Delegating Constructors
+✔ `const` keyword (const objects, const member functions, const parameters)
+✔ Execution flow & examples
+
+---
+
+# 📘 1. What Are Getters & Setters?
+
+### ✔ Definition
+
+* **Getter** → Function used to *access* private data.
+* **Setter** → Function used to *modify/change* private data.
+
+### ✔ Why Needed?
+
+* To protect private data (Encapsulation).
+* To validate data before updating.
+* To avoid direct access to class variables.
+
+---
+
+## 📘 2. Syntax: Getters & Setters
+
+```cpp
+class Student {
+private:
+    int age;
+
+public:
+    // Setter
+    void setAge(int a) {
+        if(a > 0) age = a;
+    }
+
+    // Getter
+    int getAge() const {
+        return age;
+    }
+};
+```
+
+---
+
+## 📘 3. Execution Flow
+
+1. `setAge()` called → validates → assigns value.
+2. `getAge()` called → returns private `age`.
+3. Object never accesses private data directly.
+
+---
+
+# 📘 4. Delegating Constructors
+
+### ✔ Definition
+
+A constructor that calls another constructor inside the same class.
+
+### ✔ Why Needed?
+
+* Removes code repetition.
+* Handles default initialization.
+* Provides clean constructor chains.
+
+---
+
+## 📘 5. Syntax: Delegating Constructor
+
+```cpp
+class Box {
+public:
+    int length;
+
+    // Main constructor
+    Box(int l) {
+        length = l;
+    }
+
+    // Delegating constructor
+    Box() : Box(10) { }  // Calls the main constructor
+};
+```
+
+### ✔ Execution Flow
+
+1. `Box()` → delegates to `Box(10)`
+2. `length = 10`
+3. Delegated constructor completes
+
+---
+
+# 📘 6. The `const` Keyword in C++
+
+The `const` keyword ensures a variable or function **cannot be modified**.
+
+---
+
+## 📘 7. Types of `const` Usage
+
+### ✔ 1. `const` Variable
+
+```cpp
+const int x = 10;
+```
+
+Cannot change `x`.
+
+---
+
+### ✔ 2. `const` Member Function
+
+Used when a function **does not modify** class data.
+
+```cpp
+class A {
+private:
+    int value;
+public:
+    int getValue() const {   // const member function
+        return value;
+    }
+};
+```
+
+### ❗Important:
+
+* `const` functions **cannot modify** member variables.
+* Can only call other **const** functions.
+
+---
+
+### ✔ 3. `const` Objects
+
+```cpp
+const A obj;
+obj.getValue();   // ✔ allowed
+obj.setValue(5);  // ❌ not allowed (modifies object)
+```
+
+---
+
+### ✔ 4. `const` Parameters
+
+```cpp
+void print(const int &x) {  // cannot modify x
+    cout << x;
+}
+```
+
+Used to avoid accidental changes.
+
+---
+
+# 📘 8. Getters + Setters + Const Combined Example
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Car {
+private:
+    int speed;
+
+public:
+    // delegating constructor
+    Car() : Car(0) {}
+
+    Car(int s) {
+        speed = s;
+    }
+
+    // setter
+    void setSpeed(int s) {
+        if(s >= 0) speed = s;
+    }
+
+    // getter (const function)
+    int getSpeed() const {
+        return speed;
+    }
+};
+
+int main() {
+    Car c1(50);
+    cout << c1.getSpeed() << endl;
+
+    c1.setSpeed(80);
+    cout << c1.getSpeed() << endl;
+
+    const Car c2(100);
+    cout << c2.getSpeed() << endl;  // ✔ works
+
+    return 0;
+}
+```
+
+---
+
+# 📘 9. Short Summary (Copy-Paste)
+
+```
+Getters → return private data.
+Setters → modify private data with validation.
+Delegating Constructor → constructor calling another constructor.
+const variable → cannot change.
+const object → can only call const member functions.
+const member function → cannot modify class data.
+const parameter → prevents modification of passed arguments.
+```
+
+---
+
+# 📘 10. Exam/Interview Friendly Points
+
+* Getters should be `const` functions.
+* Delegating constructors introduced in **C++11**.
+* `const` improves safety & optimization.
+* Good OOP design = private data + getter/setter.
+
+---
+
+Bhai, yeh notes bilkul perfect structure me ready hain. Agar tum chaho toh mai isko **PDF / DOCX** format me convert karke bhi de sakta hoon!
+
+
 
