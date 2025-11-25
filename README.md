@@ -2552,5 +2552,289 @@ All these concepts together make OOP powerful in C++.
 
 ---
 
+# C++ Inheritance – Complete README Style Notes
 
+## 📌 What is Inheritance?
+
+**Inheritance** is an OOP feature in C++ that allows one class (child/derived class) to acquire properties and behaviors (data + functions) of another class (parent/base class).
+
+### **Definition:**
+
+> Inheritance enables code reusability and establishes a relationship between classes in a hierarchical manner.
+
+### **Why Use Inheritance?**
+
+* Reusability of code
+* Reduces redundancy
+* Achieves hierarchical classification
+* Supports polymorphism
+* Simplifies maintenance
+
+---
+
+# ## 🧩 Types of Inheritance in C++
+
+## 1️⃣ **Single Inheritance**
+
+A single base class is inherited by a single derived class.
+
+### **Syntax:**
+
+```cpp
+class Base {
+public:
+    void show() { cout << "Base class"; }
+};
+
+class Derived : public Base {
+};
+```
+
+### **Execution:**
+
+```cpp
+Derived d;
+d.show();  // inherits Base::show()
+```
+
+---
+
+## 2️⃣ **Multilevel Inheritance**
+
+A class derived from another derived class.
+
+```
+A → B → C
+```
+
+### **Syntax:**
+
+```cpp
+class A { };
+class B : public A { };
+class C : public B { };
+```
+
+### **Execution:**
+
+```cpp
+C obj;  // Can access A and B functions
+```
+
+---
+
+## 3️⃣ **Multiple Inheritance**
+
+A class inherits from more than one base class.
+
+### **Syntax:**
+
+```cpp
+class A { };
+class B { };
+class C : public A, public B { };
+```
+
+⚠️ Might create ambiguity → solved using **virtual inheritance**.
+
+---
+
+## 4️⃣ **Hierarchical Inheritance**
+
+One base class → multiple derived classes.
+
+```
+      Base
+     /    \
+Derived1  Derived2
+```
+
+### **Syntax:**
+
+```cpp
+class Base { };
+class D1 : public Base { };
+class D2 : public Base { };
+```
+
+---
+
+## 5️⃣ **Hybrid Inheritance**
+
+Combination of multiple inheritance + multilevel inheritance.
+
+Often leads to **Diamond Problem**, fixed using **virtual inheritance**.
+
+---
+
+# ## 🏛 Access Specifiers in Inheritance
+
+| Mode          | public members | protected members | private members |
+| ------------- | -------------- | ----------------- | --------------- |
+| **public**    | public         | protected         | not accessible  |
+| **protected** | protected      | protected         | not accessible  |
+| **private**   | private        | private           | not accessible  |
+
+---
+
+# ## 🧱 Constructor & Inheritance
+
+### Constructor Execution Order
+
+**Base → Derived**
+
+```cpp
+class A {
+public:
+    A() { cout << "A constructor\n"; }
+};
+
+class B : public A {
+public:
+    B() { cout << "B constructor\n"; }
+};
+
+int main() {
+    B obj;
+}
+```
+
+**Output:**
+
+```
+A constructor
+B constructor
+```
+
+---
+
+# ## 💡 Function Overriding in Inheritance
+
+Used when derived class wants its own version of a base class function.
+
+### **Syntax:**
+
+```cpp
+class Base {
+public:
+    virtual void show() { cout << "Base"; }
+};
+
+class Derived : public Base {
+public:
+    void show() override { cout << "Derived"; }
+};
+```
+
+### Execution:
+
+```cpp
+Base* p = new Derived();
+p->show();  // Derived
+```
+
+---
+
+# ## 💎 Virtual Inheritance (Solving Diamond Problem)
+
+### Diamond Problem Structure:
+
+```
+    A
+   / \
+  B   C
+   \ /
+    D
+```
+
+### Without virtual inheritance → A is duplicated.
+
+### With virtual inheritance:
+
+```cpp
+class A { };
+
+class B : virtual public A { };
+class C : virtual public A { };
+
+class D : public B, public C { };
+```
+
+✔ Ensures only one instance of **A** inside **D**.
+
+---
+
+# ## 🔗 Using "super" behavior (Access Base Class Methods)
+
+```cpp
+class Base {
+public:
+    void display() { cout << "Base"; }
+};
+
+class Derived : public Base {
+public:
+    void display() {
+        Base::display(); // Calling parent function
+        cout << " + Derived";
+    }
+};
+```
+
+---
+
+# ## 🔥 Real Example Demonstrating Inheritance
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    void eat() { cout << "Eating..."; }
+};
+
+class Dog : public Animal {
+public:
+    void bark() { cout << "Barking..."; }
+};
+
+int main() {
+    Dog d;
+    d.eat();   // inherited
+    d.bark();  // own function
+}
+```
+
+---
+
+# ## 📌 Summary Table
+
+| Feature             | Description                               |
+| ------------------- | ----------------------------------------- |
+| Inheritance         | Reusing & extending parent class features |
+| Single              | One parent → one child                    |
+| Multilevel          | Parent → child → grandchild               |
+| Multiple            | Two parents → one child                   |
+| Hierarchical        | One parent → many children                |
+| Hybrid              | Combination                               |
+| Virtual Inheritance | Solves diamond problem                    |
+| Function Overriding | Redefine parent method                    |
+| Constructor Order   | Base → Derived                            |
+
+---
+
+# ## ✅ Ready-to-Copy Notes (Short Version)
+
+```
+Inheritance → Reusing base class members.
+Types → Single, Multilevel, Multiple, Hierarchical, Hybrid.
+Modes → public, protected, private.
+Constructor Order → Base → Derived.
+Function Overriding → Derived provides new implementation.
+Virtual Inheritance → Avoids diamond issue.
+Accessing Base Method → Base::method();
+```
+
+---
 
